@@ -13,6 +13,7 @@ It’s built for data engineers, analysts, and developers who need a reliable, s
 - 🔹 Supports MySQL, PostgreSQL, and SQLite
 - 🔹 Handles UTF-8 and fallback encodings automatically
 - 🔹 Clean and readable CLI logs
+- 🔹 Automaic Sheet Detections and Sheets Are Inserted As Table In Database
 
 ---
 
