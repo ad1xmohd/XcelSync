@@ -24,3 +24,37 @@ git clone https://github.com/ad1xmohd/XcelSync.git
 cd XcelSync
 ```
 ### 2️⃣ Install Python Dependencies
+```bash
+pip install -r requirements.txt --break-system-packages
+```
+## 💡 -(Optional TIP): Use a virtual environment for isolated installs.
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+### 3️⃣ Make the Shell Script Executable
+```bash
+chmod +x xcelsync.sh
+```
+
+### ⚙️ Usage
+**RUN THE MAIN SCRIPT**
+```bash
+./xcelsync.sh
+```
+**Under the Hood, `xcelsync.sh` orchestrates Python modules such as:
+main.py → controls overall execution
+importer.py → processes and imports Excel data
+logger.py → handles structured logging and output**
+
+## 🧰 Project Structure
+```bash
+.
+├── xcelsync.sh         # Main entry point (bash automation)
+├── main.py             # Core controller
+├── importer.py         # Handles Excel-to-database import
+├── logger.py           # Logging utility
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
+```
