@@ -9,7 +9,6 @@
 It’s built for data engineers, analysts, and developers who need a reliable, scriptable import workflow.</p>
 </body>
 </html>
----
 
 ## 🚀 Features
 
