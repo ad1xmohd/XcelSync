@@ -1,4 +1,3 @@
-<meta name="google-site-verification" content="aZuSnn0ljV_Bp0ePPvzyVRWYcA9CBj236D7opszUUnA" />
 # 🧩 XcelSync
 
 **XcelSync** is a lightweight automation tool that synchronizes and imports Excel data into databases using a hybrid **Bash + Python pipeline**.  
