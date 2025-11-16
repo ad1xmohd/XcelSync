@@ -1,183 +1,1606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z52K2N56X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1Z52K2N56X');
-</script>
-  <meta name="google-site-verification" content="aZuSnn0ljV_Bp0ePPvzyVRWYcA9CBj236D7opszUUnA" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XcelSync • Seamless Syncing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --clr-primary: #4f46e5;
-      --clr-accent: #6366f1;
-      --clr-bg: #f9fafb;
-      --clr-text: #1f2937;
-      --clr-muted: #6b7280;
-      --radius: 0.75rem;
-      --transition: 0.3s ease;
-    }
-    * { margin:0; padding:0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: var(--clr-text); background: var(--clr-bg); line-height:1.6; }
-    .container { max-width: 960px; margin:0 auto; padding: 2rem; }
-    header { text-align:center; padding: 4rem 0 2rem; }
-    header h1 { font-size: 3rem; color: var(--clr-primary); }
-    header p { font-size: 1.2rem; color: var(--clr-muted); margin-top: 0.75rem; }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z52K2N56X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1Z52K2N56X');
+    </script>
+    <meta name="google-site-verification" content="aZuSnn0ljV_Bp0ePPvzyVRWYcA9CBj236D7opszUUnA" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XcelSync • Seamless Excel Database Synchronization</title>
+    <link rel="icon" type="image/x-icon" href="https://github.com/ad1xmohd/XcelSync/raw/Master/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-light: rgba(0, 122, 255, 0.1);
+            --secondary: #5856D6;
+            --success: #34C759;
+            --warning: #FF9500;
+            --danger: #FF3B30;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+            --text-tertiary: #AEAEB2;
+            --bg-primary: rgba(255, 255, 255, 0.8);
+            --bg-secondary: rgba(255, 255, 255, 0.6);
+            --bg-tertiary: rgba(255, 255, 255, 0.4);
+            --border-light: rgba(255, 255, 255, 0.2);
+            --border-medium: rgba(255, 255, 255, 0.3);
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 24px;
+            --radius-xl: 30px;
+        }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.75rem 1.75rem;
-      border-radius: var(--radius);
-      transition: var(--transition);
-    }
-    .btn-primary {
-      background: var(--clr-primary);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--clr-accent);
-    }
-    .btn-secondary {
-      background: #fff;
-      color: var(--clr-primary);
-      border: 2px solid var(--clr-primary);
-    }
-    .btn-secondary:hover {
-      background: var(--clr-primary);
-      color: #fff;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    section { margin: 4rem 0; }
-    section h2 { font-size: 2rem; color: var(--clr-text); margin-bottom: 1.5rem; position: relative; }
-    section h2::after {
-      content: '';
-      width: 4rem;
-      height: 4px;
-      background: var(--clr-primary);
-      display: block;
-      margin-top: 0.5rem;
-      border-radius: 2px;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: #fff;
-      padding: 2rem;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-    }
-    .card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--clr-primary); }
-    .card p { color: var(--clr-muted); }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #F5F7FF 0%, #F0F4FF 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
 
-    pre {
-      background: #111827;
-      color: #f9fafb;
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      overflow-x: auto;
-      font-family: Menlo, Monaco, monospace;
-      margin-top: 1rem;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(120, 119, 198, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 119, 198, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(120, 220, 255, 0.02) 0%, transparent 30%);
+            z-index: -1;
+        }
 
-    footer {
-      text-align: center;
-      padding: 3rem 0;
-      font-size: 0.9rem;
-      color: var(--clr-muted);
-      border-top: 1px solid #e5e7eb;
-    }
+        /* Liquid Glass Background */
+        .liquid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 2.5rem; }
-      header p { font-size: 1rem; }
-    }
-  </style>
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #34C759, #007AFF);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #FF9500, #FF3B30);
+            top: 50%;
+            left: 70%;
+            animation-delay: -10s;
+        }
+
+        .blob-4 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #5856D6, #AF52DE);
+            bottom: 30%;
+            left: 10%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, 30px) scale(1.05);
+            }
+            50% {
+                transform: translate(-15px, 20px) scale(0.95);
+            }
+            75% {
+                transform: translate(10px, -15px) scale(1.02);
+            }
+        }
+
+        /* Glass Morphism Components */
+        .glass-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 24px;
+            height: 18px;
+            justify-content: space-between;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: var(--text-primary);
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid var(--border-light);
+            z-index: 999;
+            padding: 5rem 2rem 2rem;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--primary);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-medium);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(0, 122, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #0066CC;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 8rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .title-line {
+            display: block;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 400px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            padding: 1.5rem;
+            width: 220px;
+            transition: all 0.5s ease;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-1 {
+            top: 0;
+            left: 0;
+            animation: float-card 8s infinite ease-in-out;
+        }
+
+        .card-2 {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            animation: float-card 8s infinite ease-in-out 2s;
+        }
+
+        .card-3 {
+            bottom: 0;
+            left: 20%;
+            animation: float-card 8s infinite ease-in-out 4s;
+        }
+
+        @keyframes float-card {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .card-content {
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-icon-large {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .glass-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Installation Section */
+        .installation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .windows {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .linux {
+            background: rgba(88, 86, 214, 0.1);
+            color: var(--secondary);
+        }
+
+        .installation-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 0.5rem 0;
+        }
+
+        .link-highlight {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link-highlight:hover {
+            text-decoration: underline;
+        }
+
+        /* GUI Section */
+        .gui-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .gui-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gui-icon {
+            font-size: 2.5rem;
+        }
+
+        .gui-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-check {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .gui-launcher {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gui-launcher code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .gui-note {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+
+        /* Structure Section */
+        .structure-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .structure-tree {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        /* Download Section */
+        .download-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .download-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+        }
+
+        .download-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-card p {
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Links Section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .link-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .link-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .link-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .link-card p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .link-button {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-button:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        .glass-footer {
+            background: var(--bg-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-light);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Logo Showcase Section */
+        .logo-showcase {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .logo-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            object-fit: contain;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive Design */
+        /* Desktop (default styles above) */
+
+        /* Tablet */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .installation-grid,
+            .gui-grid,
+            .structure-grid,
+            .download-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-card {
+                position: relative;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-visual {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 6rem 1.5rem 4rem;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
+
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .logo-large {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 5rem 1rem 3rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .glass-card {
+                padding: 1.25rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo-large {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Cursor Glow Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        body:hover .cursor-glow {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Loading Animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #F5F7FF 0%, #F0F4FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            object-fit: contain;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="loading-screen">
+        <img src="https://github.com/ad1xmohd/XcelSync/raw/Master/favicon.ico" alt="XcelSync Logo" class="loading-logo">
+    </div>
 
-  <div class="container">
+    <div class="cursor-glow"></div>
+    <div class="liquid-background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+    </div>
 
-    <!-- Hero Section -->
-    <header>
-      <h1>XcelSync</h1>
-      <p>Effortless, blazing-fast synchronization for your workflows. Sync smarter, stay in flow.</p>
-      <a href="https://github.com/ad1xmohd/XcelSync" class="btn btn-primary" target="_blank">View on GitHub</a>
-      <a href="#features" class="btn btn-secondary">Explore Features</a>
-    </header>
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://github.com/ad1xmohd/XcelSync/raw/Master/favicon.ico" alt="XcelSync Logo" class="logo-img">
+                <span class="logo-text">XcelSync</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#gui" class="nav-link">GUI</a>
+                <a href="#download" class="nav-link">Download</a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-    <!-- Features Section -->
-    <section id="features">
-      <h2>Why XcelSync?</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Real-time Sync</h3>
-          <p>Instantly replicate files across devices or platforms with zero delay.</p>
-        </div>
-        <div class="card">
-          <h3>Cross-Platform</h3>
-          <p>Works seamlessly on all major OSes. Unified experience wherever you are.</p>
-        </div>
-        <div class="card">
-          <h3>Secure & Reliable</h3>
-          <p>Built-in encryption and retry mechanisms ensure your data stays safe and consistent.</p>
-        </div>
-        <div class="card">
-          <h3>Easy Setup</h3>
-          <p>One command setup. Minimal fuss. Maximum productivity.</p>
-        </div>
-      </div>
-    </section>
+    <div class="mobile-menu">
+        <a href="#home" class="mobile-nav-link">Home</a>
+        <a href="#features" class="mobile-nav-link">Features</a>
+        <a href="#installation" class="mobile-nav-link">Installation</a>
+        <a href="#gui" class="mobile-nav-link">GUI</a>
+        <a href="#download" class="mobile-nav-link">Download</a>
+    </div>
 
-    <!-- Getting Started Section -->
-    <section id="getting-started">
-      <h2>Getting Started</h2>
-      <p>Clone the repo and run the setup script:</p>
-      <pre><code>
-git clone https://github.com/ad1xmohd/XcelSync.git
-cd XcelSync
-chmod +x install.sh
-./install.sh
-      </code></pre>
-    </section>
+    <main>
+        <!-- Logo Showcase Section -->
+        <section class="logo-showcase">
+            <img src="https://github.com/ad1xmohd/XcelSync/raw/Master/favicon.ico" alt="XcelSync Logo" class="logo-large">
+            <h2 class="section-title">XcelSync</h2>
+            <p class="section-subtitle">Seamless Excel Database Synchronization</p>
+        </section>
 
-    <!-- Quick Links Section -->
-    <section id="links">
-      <h2>Quick Links</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Repository</h3>
-          <p><a href="https://github.com/ad1xmohd/XcelSync" class="btn btn-secondary" target="_blank">GitHub</a></p>
-        </div>
-        <div class="card">
-          <h3>License</h3>
-          <p><a href="https://raw.githubusercontent.com/ad1xmohd/XcelSync/refs/heads/Master/LICENSE" class="btn btn-secondary" target="_blank">View License</a></p>
-        </div>
-      </div>
-    </section>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Excel Database Sync</span>
+                        <span class="title-line gradient-text">Made Simple</span>
+                    </h1>
+                    <p class="hero-description">
+                        A lightweight automation tool that synchronizes and imports Excel data into databases using a hybrid Python + Shell + Batch pipeline. Now available for both Windows and Linux — one repository, two releases, Cross-Platform supported.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://github.com/ad1xmohd/XcelSync" class="btn btn-primary" target="_blank">
+                            <span>View on GitHub</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#download" class="btn btn-secondary">
+                            <span>Download</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <div class="card-content">
+                            <div class="card-icon">🖥️</div>
+                            <h3>Cross-Platform</h3>
+                            <p>Windows & Linux</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="card-content">
+                            <div class="card-icon">📊</div>
+                            <h3>Multi-Database</h3>
+                            <p>MySQL, PostgreSQL, SQLite</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="card-content">
+                            <div class="card-icon">⚡</div>
+                            <h3>Web GUI</h3>
+                            <p>Flask-based Interface</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-      &copy; 2025 ad1xmohd • Crafted with passion. <br>
-      <small>Want to contribute? Check the Conacts</small>
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why XcelSync?</h2>
+                    <p class="section-subtitle">Powerful features for seamless data synchronization</p>
+                </div>
+                <div class="features-grid">
+                    <div class="glass-card">
+                        <div class="card-icon-large">🖥️</div>
+                        <h3>Cross-Platform Support</h3>
+                        <p>Works seamlessly on Windows and Linux. One repository, two releases, truly cross-platform supported. Use the same tool across all major operating systems.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">📊</div>
+                        <h3>Multi-Database Support</h3>
+                        <p>Supports MySQL, PostgreSQL, and SQLite databases. Import Excel sheets as tables automatically with intelligent data mapping and type detection.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">🌐</div>
+                        <h3>Web-Based GUI (Windows)</h3>
+                        <p>Beautiful Flask-based web interface for Windows edition. Intuitive UI for easy configuration and monitoring of sync operations.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">💻</div>
+                        <h3>CLI Interface (Linux)</h3>
+                        <p>Clean and readable CLI logs for Linux/macOS. Perfect for automation scripts and terminal-based workflows.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">🧩</div>
+                        <h3>Modular Architecture</h3>
+                        <p>Python backend with modular components: main.py (controller), importer.py (Excel processing), logger.py (structured logging), and web_app.py (GUI).</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">🔐</div>
+                        <h3>Secure & Reliable</h3>
+                        <p>Handles encoding and logging with precision. Automated logging with status tracking ensures data integrity throughout the sync process.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">⚡</div>
+                        <h3>Simple Launchers</h3>
+                        <p>Easy-to-use launchers: <code>xcelsync.sh</code> for Linux/macOS (CLI) and <code>xcelsync.bat</code> for Windows (Web-based GUI).</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="card-icon-large">🚀</div>
+                        <h3>Easy Setup</h3>
+                        <p>One-command setup for Linux. For Windows, simply double-click the launcher - it automatically detects and installs Python if needed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="installation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Installation</h2>
+                    <p class="section-subtitle">Get started in minutes with platform-specific instructions</p>
+                </div>
+                <div class="installation-grid">
+                    <!-- Windows Installation -->
+                    <div class="installation-card glass-card">
+                        <div class="platform-badge windows">🪟 Windows</div>
+                        <h3>Windows Installation</h3>
+                        <div class="installation-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Download Cross-Platform Version</h4>
+                                    <p>Download the <a href="https://github.com/ad1xmohd/XcelSync/releases/download/XcelSync/XcelSync-CrossPlatform.zip" target="_blank" class="link-highlight">XcelSync-CrossPlatform.zip</a> from releases.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Run the Launcher</h4>
+                                    <p>Double-click <code>xcelsync.bat</code>. It will automatically detect if Python is installed and guide you through the setup.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Python Installation (if needed)</h4>
+                                    <p>If Python is not detected, install Python 3.3+ from <a href="https://www.python.org/downloads/windows/" target="_blank" class="link-highlight">python.org</a>. The launcher will handle dependencies automatically.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Launch Web GUI</h4>
+                                    <p>Run <code>xcelsync.bat</code> or <code>web_app.py</code> to start the web-based GUI. Open your browser to the displayed URL.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Linux Installation -->
+                    <div class="installation-card glass-card">
+                        <div class="platform-badge linux">🐧 Linux</div>
+                        <h3>Linux Installation</h3>
+                        <div class="installation-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Clone the Repository</h4>
+                                    <pre class="code-block"><code>git clone https://github.com/ad1xmohd/XcelSync.git
+cd XcelSync</code></pre>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Install Python Dependencies</h4>
+                                    <pre class="code-block"><code>pip install -r requirements.txt --break-system-packages</code></pre>
+                                    <p class="tip">💡 <strong>Optional:</strong> Use a virtual environment for isolated installs:</p>
+                                    <pre class="code-block"><code>python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Make Script Executable</h4>
+                                    <pre class="code-block"><code>chmod +x xcelsync.sh</code></pre>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Run the Main Script</h4>
+                                    <pre class="code-block"><code>./xcelsync.sh</code></pre>
+                                    <p>The script orchestrates Python modules: <code>main.py</code> (controller), <code>importer.py</code> (Excel processing), and <code>logger.py</code> (logging).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUI Version Details -->
+        <section id="gui" class="gui-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">GUI Versions</h2>
+                    <p class="section-subtitle">Choose the interface that works best for you</p>
+                </div>
+                <div class="gui-grid">
+                    <div class="gui-card glass-card">
+                        <div class="gui-header">
+                            <div class="gui-icon">🪟</div>
+                            <h3>Windows / CrossPlatform</h3>
+                        </div>
+                        <div class="gui-features">
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Web-Based GUI powered by Flask</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Auto-detects and installs Python</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>User-friendly browser interface</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Visual status monitoring</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Easy configuration through UI</span>
+                            </div>
+                        </div>
+                        <div class="gui-launcher">
+                            <p><strong>Launcher:</strong></p>
+                            <code>xcelsync.bat</code> or <code>web_app.py</code>
+                        </div>
+                        <p class="gui-note">The Cross-Platform version can be used on Linux/Windows/macOS. It runs on Python 3 + HTML, CSS, JS for the Web-Based GUI.</p>
+                    </div>
+                    <div class="gui-card glass-card">
+                        <div class="gui-header">
+                            <div class="gui-icon">💻</div>
+                            <h3>Linux / macOS (CLI)</h3>
+                        </div>
+                        <div class="gui-features">
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Clean and readable CLI logs</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Perfect for automation scripts</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Terminal-based workflow</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Structured logging output</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-check">✓</span>
+                                <span>Lightweight and fast</span>
+                            </div>
+                        </div>
+                        <div class="gui-launcher">
+                            <p><strong>Launcher:</strong></p>
+                            <code>xcelsync.sh</code>
+                        </div>
+                        <p class="gui-note">Orchestrates Python modules: main.py → controls execution, importer.py → processes Excel data, logger.py → handles logging.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Structure Section -->
+        <section id="structure" class="structure-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Project Structure</h2>
+                    <p class="section-subtitle">Well-organized, modular codebase</p>
+                </div>
+                <div class="structure-grid">
+                    <div class="structure-card glass-card">
+                        <h3>🐧 Linux Version</h3>
+                        <pre class="structure-tree"><code>.
+├── LICENSE             # Non-Commercial, Restricted MIT Variant
+├── xcelsync.sh         # Main entry point (bash automation)
+├── main.py             # Core controller
+├── importer.py         # Handles Excel-to-database import
+├── logger.py           # Logging utility
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation</code></pre>
+                    </div>
+                    <div class="structure-card glass-card">
+                        <h3>🪟 Windows/Cross-Platform Version</h3>
+                        <pre class="structure-tree"><code>.
+├── LICENSE                # Non-Commercial, Restricted MIT Variant
+├── xcelsync.bat           # Windows launcher (auto-installer)
+├── main.py                # Core controller
+├── importer.py            # Excel import handler
+├── logger.py              # Logging utility
+├── web_app.py             # Web-Based GUI and FLASK API
+├── requirements.txt       # Python dependencies
+└── README.md              # Documentation</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Download</h2>
+                    <p class="section-subtitle">Get XcelSync for your platform</p>
+                </div>
+                <div class="download-cards">
+                    <div class="download-card glass-card">
+                        <div class="download-icon">📦</div>
+                        <h3>Cross-Platform Version</h3>
+                        <p>Works on Windows, Linux, and macOS. Includes web-based GUI.</p>
+                        <a href="https://github.com/ad1xmohd/XcelSync/releases/download/XcelSync/XcelSync-CrossPlatform.zip" class="btn btn-primary" target="_blank">
+                            <span>Download CrossPlatform</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 3v10m0 0L6 9m4 4l4-4M3 15h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="download-card glass-card">
+                        <div class="download-icon">🔗</div>
+                        <h3>GitHub Repository</h3>
+                        <p>Clone or fork the repository for the latest version and source code.</p>
+                        <a href="https://github.com/ad1xmohd/XcelSync" class="btn btn-secondary" target="_blank">
+                            <span>View on GitHub</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section id="links" class="links-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Links</h2>
+                    <p class="section-subtitle">Important resources and documentation</p>
+                </div>
+                <div class="links-grid">
+                    <div class="link-card glass-card">
+                        <div class="link-icon">📚</div>
+                        <h3>Repository</h3>
+                        <p>View the full source code and contribute to the project.</p>
+                        <a href="https://github.com/ad1xmohd/XcelSync" class="link-button" target="_blank">GitHub Repository →</a>
+                    </div>
+                    <div class="link-card glass-card">
+                        <div class="link-icon">📄</div>
+                        <h3>License</h3>
+                        <p>Non-Commercial, Restricted MIT Variant license.</p>
+                        <a href="https://raw.githubusercontent.com/ad1xmohd/XcelSync/refs/heads/Master/LICENSE" class="link-button" target="_blank">View License →</a>
+                    </div>
+                    <div class="link-card glass-card">
+                        <div class="link-icon">📖</div>
+                        <h3>README</h3>
+                        <p>Comprehensive documentation and usage guide.</p>
+                        <a href="https://github.com/ad1xmohd/XcelSync/blob/Master/README.md" class="link-button" target="_blank">Read Documentation →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://github.com/ad1xmohd/XcelSync/raw/Master/favicon.ico" alt="XcelSync Logo" class="footer-logo-img">
+                    <span class="logo-text">XcelSync</span>
+                </div>
+                <p class="footer-text">© 2025 ad1xmohd • Crafted with passion</p>
+                <p class="footer-text" style="font-size: 0.875rem; margin-top: 0.5rem;">Want to contribute? Check the Contacts</p>
+                <div class="social-links">
+                    <a href="https://github.com/ad1xmohd" target="_blank" class="social-link" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/ad1xmohd" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="mailto:ad1xmohd@gmail.com" class="social-link" aria-label="Email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-  </div>
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading-screen').classList.add('hidden');
+            }, 500);
+        });
 
+        // Cursor glow effect
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.querySelector('.cursor-glow');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.glass-nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(30px)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.glass-card, .section-header').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
