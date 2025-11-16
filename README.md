@@ -25,7 +25,7 @@ Now available for both Windows and Linux — one repository, two releases, Cross
 
 ### Windows
 ### 1️⃣ Download the Cross-Platform Version
-****[XcelSync-CrossPlatform](https://github.com/ad1xmohd/XcelSync/releases/download/XcelSync/XcelSync-CrossPlatform.zip)****
+****[Download - XcelSync-CrossPlatform 1.0](https://github.com/ad1xmohd/XcelSync/releases/download/XcelSync/XcelSync-CrossPlatform.zip)****
 ### 2️⃣ Double click 'xcelsync.bat'
 It will start to Detect wheather Python installed or not. Sometimes it will automatically install Python if its not installed Automatically You have to Install it from [python.org](https://www.python.org/downloads/windows/). Make sure it is Python3.3+.
 **THE CROSSPLATFORM VERSION CAN BE USED ALSO IN LINUX/WINDOWS/MacOS(not-tested) it runs on Python3 + HTML,css,js for Web-Based GUI**
